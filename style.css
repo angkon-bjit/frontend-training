@@ -1,0 +1,64 @@
+.todo-app{
+    background-color: #f0f0f0;
+    max-width: 400px;
+    margin: auto;
+    border: 1px solid #3b3030;
+    border-radius: 8px;
+    padding: 5px 8px;
+}
+
+.todo-app h1{
+    text-align: center;
+}
+
+.todo-list{
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+.todo-item{
+    background-color: rgb(182, 200, 224);
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    height: 20px;
+    border-radius: 8px;
+    
+}
+
+.todo-item label{
+    flex: 1;
+    margin-left: 5px;
+}
+
+.delete-button{
+    background-color: red;
+    color: white;
+    height: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+}
+
+.submit-button{
+    background-color: rgb(83, 228, 83);
+    font-weight: 600;
+    border: none;
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+}
+
+.submit-button:hover{
+    cursor: pointer;
+}
+
+.todo-form{
+    margin-bottom: 10px;
+}
+.todo-form input{
+    height: 20px;
+}
