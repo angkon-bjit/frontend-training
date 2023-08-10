@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div id="ourDiv">
+      <h1 id="ourHeader" style="color: blue">Creating elements</h1>
+      <p id="ourParagraph">We will create some p tags here:</p>
+    </div>
+    <button id="clickButton" onclick="creatingElement()">Click Me!</button>
+    <p id="secondDiv"></p>
+
+    <script>
+      const ourHeaderDom = document.getElementById("ourHeader");
+      const ourDivDom = document.getElementById("ourDiv");
+      const ourSecondDivDom = document.getElementById("secondDiv");
+
+      function creatingElement() {
+        const para = document.createElement("p");
+        para.innerText = "This is newly added!!!";
+        para.style.color = "red";
+        ourDivDom.appendChild(para);
+
+        const newHeaderElement = document.createElement("h1");
+        newHeaderElement.innerText = "This is our new header";
+        newHeaderElement.style.color = "purple";
+        ourSecondDivDom.append(newHeaderElement);
+
+        const newDivElement = document.createElement("div");
+        newDivElement.innerHTML = newHeaderElement;
+      }
+    </script>
+  </body>
+</html>

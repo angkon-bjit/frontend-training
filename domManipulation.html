@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="ourHeader" style="color: blue">Our first dom manipulation</h1>
+    <p id="ourParagraph">
+      This is our ourParagraph. Some description is there.
+    </p>
+    <script>
+      const ourHeaderDom = document.getElementById("ourHeader");
+      ourHeaderDom.style.color = "red";
+
+      const ourParagraphDom = document.getElementById("ourParagraph");
+      ourParagraphDom.style.color = "blue";
+      ourParagraphDom.style.padding = "100px";
+      ourParagraphDom.style.borderRadius = "10px";
+    </script>
+  </body>
+</html>
