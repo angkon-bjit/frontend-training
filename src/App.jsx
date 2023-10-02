@@ -1,22 +1,27 @@
+import { createContext, useEffect, useState } from "react";
+import DebounceDemo from "./components/debounceDemo";
 import FetchDemo from "./components/fetchDemo";
 import PostDemo from "./components/postDemo";
-import useCustomHook from "./hooks/useCustomHook";
-import useProductHook from "./hooks/useProductHook";
+import RegistrationForm from "./components/registrationForm";
+
+export const ProductContext = createContext();
 
 function App() {
-  // const { count, handleOnclickCount } = useCustomHook(20);
-  // const { title } = useProductHook();
+  const [fetchReload, setFetchReload] = useState(false);
+
+  useEffect(() => {
+    console.log("FetchReload: ", fetchReload);
+  }, [fetchReload]);
 
   return (
     <>
-      <PostDemo />
-      <FetchDemo />
-      {/* <div>
-        <h1>Custom hooks</h1>
-        <h3>Title: {title}</h3>
-        <h4>Count val: {count}</h4>
-        <button onClick={handleOnclickCount}>Increase</button>
-      </div> */}
+      <RegistrationForm />
+      <DebounceDemo />
+
+      <ProductContext.Provider value={{ fetchReload, setFetchReload }}>
+        <PostDemo />
+        <FetchDemo />
+      </ProductContext.Provider>
     </>
   );
 }

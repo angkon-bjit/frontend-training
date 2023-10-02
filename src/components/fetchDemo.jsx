@@ -6,7 +6,7 @@ const FetchDemo = () => {
 
   return (
     <div>
-      <h1>FetchDemo</h1>
+      <h1>MODULE: FetchDemo</h1>
       <h3>Products list: </h3>
       {loading === true && <h1>Loading...</h1>}
       {productData.map((product) => {

@@ -35,7 +35,7 @@ const PostDemo = () => {
 
   return (
     <div>
-      <h1>Post Data</h1>
+      <h1>MODULE: Post Data</h1>
       <p>Enter title</p>
       <form onSubmit={handleCreateProduct}>
         <input

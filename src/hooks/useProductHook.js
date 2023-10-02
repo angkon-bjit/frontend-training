@@ -1,14 +1,21 @@
-import { useState, useEffect } from "react";
+import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import axiosInstance from "../utils/axiosInstance";
+import { ProductContext } from "../App";
 
 const useProductHook = () => {
   const [productData, setProductData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(async () => {
-    setLoading(true);
+  const { fetchReload, setFetchReload } = useContext(ProductContext);
 
-    const data = fetch(`https://jsonplaceholder.typicode.com/posts`)
-      .then((resp) => resp.json())
+  useEffect(() => {
+    console.log("Fetch API called");
+
+    setLoading(true);
+    axiosInstance
+      .get(`/posts`)
+      .then((resp) => resp.data)
       .then((data) => {
         console.log("Data : ", data);
         setProductData(data);
@@ -21,18 +28,20 @@ const useProductHook = () => {
       })
       .finally(() => {
         setLoading(false);
+        setFetchReload(true);
       });
-  }, []);
+  }, [fetchReload]);
 
   const createPost = (formData) => {
     setLoading(true);
     console.log("The form data ", formData);
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    })
-      .then((resp) => resp.json())
-      .then((data) => console.log("Successfully created", data))
+    axiosInstance
+      .post("/posts", formData)
+      .then((resp) => resp.data)
+      .then((data) => {
+        console.log("Successfully created", data);
+        setFetchReload(true);
+      })
       .finally(() => setLoading(false));
   };
 
