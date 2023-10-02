@@ -4,7 +4,7 @@ const useProductHook = () => {
   const [productData, setProductData] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  useEffect(async () => {
+  useEffect(() => {
     setLoading(true);
 
     const data = fetch(`https://jsonplaceholder.typicode.com/posts`)
