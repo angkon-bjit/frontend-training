@@ -1,27 +1,27 @@
 import { createContext, useEffect, useState } from "react";
-import DebounceDemo from "./components/debounceDemo";
-import FetchDemo from "./components/fetchDemo";
-import PostDemo from "./components/postDemo";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "./pages/home.page";
+import ProductsPage from "./pages/products.page";
+import LoginPage from "./pages/login.page";
+import UserCreatePage from "./pages/userCreate.page";
+import CustomHeader from "./components/header.component";
 import RegistrationForm from "./components/registrationForm";
-
-export const ProductContext = createContext();
+import NotFoundPage from "./pages/notFound.page";
+import ProductDetails from "./pages/productDetails.page";
 
 function App() {
-  const [fetchReload, setFetchReload] = useState(false);
-
-  useEffect(() => {
-    console.log("FetchReload: ", fetchReload);
-  }, [fetchReload]);
-
   return (
     <>
-      <RegistrationForm />
-      <DebounceDemo />
-
-      <ProductContext.Provider value={{ fetchReload, setFetchReload }}>
-        <PostDemo />
-        <FetchDemo />
-      </ProductContext.Provider>
+      <CustomHeader />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:productId" element={<ProductDetails />} />
+        <Route path="/user/create" element={<UserCreatePage />} />
+        <Route path="/user/edit" element={<UserCreatePage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </>
   );
 }
