@@ -1,26 +1,39 @@
-import { createContext, useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home.page";
-import ProductsPage from "./pages/products.page";
-import LoginPage from "./pages/login.page";
-import UserCreatePage from "./pages/userCreate.page";
-import CustomHeader from "./components/header.component";
-import RegistrationForm from "./components/registrationForm";
-import NotFoundPage from "./pages/notFound.page";
-import ProductDetails from "./pages/productDetails.page";
+import { Routes, Route } from "react-router-dom";
+import Navbar from "./components/navbar";
+import Home from "./pages/home";
+import About from "./pages/about";
+import Contact from "./pages/contact";
+import Blogs from "./pages/blogs";
+import SignUp from "./pages/signUp";
+import Blog from "./pages/blog";
+import NavigateDemo from "./pages/navigateDemo";
+import Authenticate from "./pages/authenticate";
+import PrivateGroup from "./pages/privateGroup";
+import LoginForm from "./pages/login";
 
 function App() {
   return (
     <>
-      <CustomHeader />
+      <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="/user/create" element={<UserCreatePage />} />
-        <Route path="/user/edit" element={<UserCreatePage />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/blogs" element={<Blogs />}>
+          <Route path=":blogId" element={<Blog />} />
+        </Route>
+        <Route path="/sign-up" element={<SignUp />}>
+          <Route path="contact" element={<Contact />} />
+          <Route path="blogs" element={<Blogs />} />
+        </Route>
+
+        <Route path="/redirect" element={<NavigateDemo />} />
+
+        <Route path="/login" element={<LoginForm />} />
+
+        {/* private Route */}
+        <Route element={<Authenticate />}>
+          <Route path="/private-group" element={<PrivateGroup />} />
+        </Route>
       </Routes>
     </>
   );

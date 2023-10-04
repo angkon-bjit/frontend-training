@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
+import CustomPassword from "./customPassword.component";
 
 const RegistrationForm = () => {
   const {
@@ -80,58 +81,6 @@ const RegistrationForm = () => {
         </div>
 
         <div>
-          <h4>FirstName</h4>
-          <Controller
-            name="firstname"
-            control={control}
-            rules={{
-              required: "FirstName is required",
-            }}
-            render={({ field }) => (
-              <input
-                placeholder="Enter FirstName"
-                {...field}
-                style={{ border: errors.firstname ? "1px solid red" : "" }}
-              />
-            )}
-          />
-          {errors.firstname && <h5>{errors.firstname.message}</h5>}
-        </div>
-
-        <div>
-          <h4>LastName</h4>
-          <Controller
-            name="lastname"
-            control={control}
-            rules={{
-              required: "LastName is required",
-            }}
-            render={({ field }) => (
-              <input
-                placeholder="Enter LastName"
-                {...field}
-                style={{ border: errors.lastname ? "1px solid red" : "" }}
-              />
-            )}
-          />
-          {errors.lastname && <h5>{errors.lastname.message}</h5>}
-        </div>
-        <div>
-          <h4>FullName</h4>
-          <Controller
-            name="fullname"
-            control={control}
-            render={({ field }) => (
-              <input
-                placeholder="Full Name"
-                {...field}
-                style={{ border: errors.lastname ? "1px solid red" : "" }}
-              />
-            )}
-          />
-          {errors.fullname && <h5>{errors.lastname.fullname}</h5>}
-        </div>
-        <div>
           <h4>Email</h4>
           <Controller
             name="email"
@@ -167,12 +116,13 @@ const RegistrationForm = () => {
               },
             }}
             render={({ field }) => (
-              <input
-                placeholder="Enter Password"
-                type="password"
-                {...field}
-                style={{ border: errors.password ? "1px solid red" : "" }}
-              />
+              <CustomPassword fields={field} placeholder="Enter Password" />
+              // <input
+              //   placeholder="Enter Password"
+              //   type="password"
+              //   {...field}
+              //   style={{ border: errors.password ? "1px solid red" : "" }}
+              // />
             )}
           />
           {errors.password && <h5>{errors.password.message}</h5>}
