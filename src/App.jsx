@@ -10,6 +10,8 @@ import NavigateDemo from "./pages/navigateDemo";
 import Authenticate from "./pages/authenticate";
 import PrivateGroup from "./pages/privateGroup";
 import LoginForm from "./pages/login";
+import BooksPage from "./pages/books.page";
+import AddBookPage from "./pages/addbook.page";
 
 function App() {
   return (
@@ -25,14 +27,14 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="blogs" element={<Blogs />} />
         </Route>
-
+        *
         <Route path="/redirect" element={<NavigateDemo />} />
-
         <Route path="/login" element={<LoginForm />} />
-
         {/* private Route */}
         <Route element={<Authenticate />}>
           <Route path="/private-group" element={<PrivateGroup />} />
+          <Route path="/books" element={<BooksPage />} />
+          <Route path="/add-book" element={<AddBookPage />} />
         </Route>
       </Routes>
     </>

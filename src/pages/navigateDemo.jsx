@@ -5,12 +5,12 @@ const NavigateDemo = () => {
 
   return (
     <div>
-      NavigateDemo{" "}
+      Goto Blogs page{" "}
       <button
         onClick={() =>
           navigate("/blogs", {
             replace: true,
-            state: { id: "25", item: "The item" },
+            state: { id: "25", itemName: "The item" },
           })
         }
       >

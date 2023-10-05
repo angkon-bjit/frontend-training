@@ -5,7 +5,13 @@ const Authenticate = () => {
   const check = localStorage.getItem("token");
   console.log("Authenticating", check);
 
-  return check ? <Outlet /> : <Navigate to="/about" />;
+  return check ? (
+    <div>
+      <Outlet />{" "}
+    </div>
+  ) : (
+    <Navigate to="/login" />
+  );
 };
 
 export default Authenticate;
