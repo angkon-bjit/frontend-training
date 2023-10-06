@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from "react-redux";
-import { deleteTodo } from "../redux/actions/taskActions";
+import { deleteTodo } from "../store/slices/todoSlice";
 
 const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => state.todo.tasks);
   const dispatch = useDispatch();
 
   const handleDelete = (id) => {
@@ -15,21 +15,22 @@ const TaskList = () => {
         <h3>Your tasks:</h3>
         <ul className="tasks">
           {console.log("the tasks are ", tasks)}
-          {tasks.tasksList.map((task) => {
-            console.log("Singe task is ", task);
+          {tasks.length > 0 &&
+            tasks.map((task) => {
+              // console.log("Singe task is ", task);
 
-            return (
-              <li className="task" key={task.id}>
-                {task.text}
-                <button
-                  className="delete-btn"
-                  onClick={() => handleDelete(task.id)}
-                >
-                  delete
-                </button>
-              </li>
-            );
-          })}
+              return (
+                <li className="task" key={task.id}>
+                  {task.text}
+                  <button
+                    className="delete-btn"
+                    onClick={() => handleDelete(task.id)}
+                  >
+                    delete
+                  </button>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

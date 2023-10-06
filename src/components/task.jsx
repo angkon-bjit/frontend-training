@@ -1,27 +1,17 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTodo } from "../redux/actions/taskActions";
-import { addUserInfo } from "../redux/actions/userActions";
+import { addTodo } from "../store/slices/todoSlice";
 
 const Task = () => {
   const dispatch = useDispatch();
-  const [task, setTask] = useState("");
+  const [taskValue, setTaskValue] = useState("");
 
   const addNewTask = () => {
-    if (task !== "") {
-      dispatch(addTodo(task));
+    if (taskValue !== "") {
+      dispatch(addTodo(taskValue));
+      // console.log("The task ", task);
+      setTaskValue("");
     }
-    setTask("");
-  };
-
-  const addUser = () => {
-    const userInfo = {
-      userId: "123123",
-      username: "john",
-      email: "john@gmail.com",
-    };
-
-    dispatch(addUserInfo(userInfo));
   };
 
   return (
@@ -30,12 +20,11 @@ const Task = () => {
         <input
           type="text"
           placeholder="Add task here..."
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
           className="taskInput"
+          value={taskValue}
+          onChange={(e) => setTaskValue(e.target.value)}
         />
         <button onClick={addNewTask}>Add task</button>
-        <button onClick={addUser}>Add user info</button>
       </div>
     </div>
   );
